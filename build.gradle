@@ -1,0 +1,26 @@
+apply plugin: 'kotlin'
+
+sourceSets {
+  main.kotlin.srcDirs + 'src/main/kotlin'
+  test.kotlin.srcDirs + 'src/test/kotlin'
+}
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+  compile "org.jetbrains.kotlin:kotlin-gradle-plugin-api:${kotlinVersion}"
+  compile "org.jetbrains.kotlin:gradle-api:${kotlinVersion}"
+  compile "org.jetbrains.kotlin:kotlin-compiler-embeddable:${kotlinVersion}"
+}
+
+buildscript {
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+  }
+  repositories {
+    jcenter()
+  }
+}
