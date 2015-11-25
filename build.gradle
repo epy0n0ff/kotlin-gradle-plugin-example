@@ -19,6 +19,11 @@ dependencies {
   compile "org.jetbrains.kotlin:gradle-api:${kotlinGradleApiVersion}"
 }
 
+jar {
+  baseName "kotlin-gradle-plugin-example"
+  version "0.0.1"
+}
+
 task wrapper(type: Wrapper) {
   gradleVersion = "2.8"
 }
