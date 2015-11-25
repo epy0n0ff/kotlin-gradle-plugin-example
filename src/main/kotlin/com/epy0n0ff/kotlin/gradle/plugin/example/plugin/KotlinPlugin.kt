@@ -1,4 +1,4 @@
-package com.epy0n0ff.kotlin.gradle.plugin.example
+package com.epy0n0ff.kotlin.gradle.plugin.example.plugin
 
 import org.jetbrains.kotlin.gradle.plugin.KotlinGradleSubplugin
 
