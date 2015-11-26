@@ -9,19 +9,18 @@ buildscript {
 
 apply plugin: 'kotlin'
 
+group 'com.epy0n0ff'
+version "0.0.1"
+
 repositories {
   jcenter()
   maven { url 'http://repository.jetbrains.com/utils'}
 }
 
 dependencies {
-  compile "org.jetbrains.kotlin:kotlin-gradle-plugin-api:${kotlinVersion}"
+  compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
   compile "org.jetbrains.kotlin:gradle-api:${kotlinGradleApiVersion}"
-}
-
-jar {
-  baseName "kotlin-gradle-plugin-example"
-  version "0.0.1"
+  // どこかにinclude-runtiem付ける
 }
 
 task wrapper(type: Wrapper) {
