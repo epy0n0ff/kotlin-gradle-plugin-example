@@ -1,10 +1,10 @@
 buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
-  }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+    }
 }
 
 apply plugin: 'kotlin'
@@ -12,17 +12,31 @@ apply plugin: 'kotlin'
 group 'com.epy0n0ff'
 version "0.0.1"
 
+configurations {
+    runtime
+}
+
 repositories {
-  jcenter()
-  maven { url 'http://repository.jetbrains.com/utils'}
+    jcenter()
+    maven { url 'http://repository.jetbrains.com/utils' }
 }
 
 dependencies {
-  compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
-  compile "org.jetbrains.kotlin:gradle-api:${kotlinGradleApiVersion}"
-  // どこかにinclude-runtiem付ける
+    runtime "org.jetbrains.kotlin:kotlin-runtime:${kotlinVersion}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    compile "org.jetbrains.kotlin:gradle-api:${kotlinGradleApiVersion}"
+}
+
+jar {
+    manifest {
+        attributes(
+                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+    }
+    into('lib') {
+        from configurations.compile
+    }
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = "2.8"
+    gradleVersion = "2.8"
 }
